@@ -411,11 +411,11 @@ Representation to Re-Create the object:
 </section>
 <section id="completed-hack" class="level1">
 <h1>Completed Hack</h1>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> werkzeug.security <span class="im">import</span> generate_password_hash, check_password_hash</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Start code for hacks with my b day and age</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Start code w/ birthday and age</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_age(born):</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    today <span class="op">=</span> date.today()</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> today.year <span class="op">-</span> born.year <span class="op">-</span> ((today.month, today.day) <span class="op">&lt;</span> (born.month, born.day))</span>
@@ -427,130 +427,129 @@ Representation to Re-Create the object:
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> User:    </span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, uid, password, dob, classOf):</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._name <span class="op">=</span> name    <span class="co"># variables with self prefix become part of the object, </span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._uid <span class="op">=</span> uid</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.set_password(password)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._dob <span class="op">=</span> dob</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._classOf <span class="op">=</span> classOf</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> name(<span class="va">self</span>):</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._name</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># a setter function, allows name to be updated after initial object creation</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">@name.setter</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> name(<span class="va">self</span>, name):</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._name <span class="op">=</span> name</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># a getter method, extracts email from object</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> uid(<span class="va">self</span>):</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._uid</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># a setter function, allows name to be updated after initial object creation</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">@uid.setter</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> uid(<span class="va">self</span>, uid):</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._uid <span class="op">=</span> uid</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check if uid parameter matches user id in object, return boolean</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_uid(<span class="va">self</span>, uid):</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._uid <span class="op">==</span> uid</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dob property is returned as string, to avoid unfriendly outcomes</span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dob(<span class="va">self</span>):</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>        dob_string <span class="op">=</span> <span class="va">self</span>._dob.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">-%Y'</span>)</span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dob_string</span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dob should be have verification for type date</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">@dob.setter</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dob(<span class="va">self</span>, dob):</span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._dob <span class="op">=</span> dob</span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># age is calculated and returned each time it is accessed</span></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> age(<span class="va">self</span>):</span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>        today <span class="op">=</span> date.today()</span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> today.year <span class="op">-</span> <span class="va">self</span>._dob.year <span class="op">-</span> ((today.month, today.day) <span class="op">&lt;</span> (<span class="va">self</span>._dob.month, <span class="va">self</span>._dob.day))</span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> classOf(<span class="va">self</span>):</span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._classOf</span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>    <span class="co"># a setter function, allows classOf to be updated after initial object creation</span></span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classOf.setter</span></span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> name(<span class="va">self</span>, classOf):</span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._classOf <span class="op">=</span> classOf</span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dictionary is customized, removing password for security purposes</span></span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dictionary(<span class="va">self</span>):</span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>        <span class="bu">dict</span> <span class="op">=</span> {</span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>            <span class="st">"name"</span> : <span class="va">self</span>.name,</span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>            <span class="st">"uid"</span> : <span class="va">self</span>.uid,</span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>            <span class="st">"dob"</span> : <span class="va">self</span>.dob,</span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>            <span class="st">"age"</span> : <span class="va">self</span>.age</span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">dict</span></span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update password, this is conventional setter</span></span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> set_password(<span class="va">self</span>, password):</span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Create a hashed password."""</span></span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._password <span class="op">=</span> generate_password_hash(password, method<span class="op">=</span><span class="st">'sha256'</span>)</span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check password parameter versus stored/encrypted password</span></span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_password(<span class="va">self</span>, password):</span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Check against hashed password."""</span></span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> check_password_hash(<span class="va">self</span>._password, password)</span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result</span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output content using json dumps, this is ready for API response</span></span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> json.dumps(<span class="va">self</span>.dictionary)</span>
-<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output command to recreate the object, uses attribute directly</span></span>
-<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
-<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f'User(name=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_name<span class="sc">}</span><span class="ss">, uid=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_uid<span class="sc">}</span><span class="ss">, password=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_password<span class="sc">}</span><span class="ss">,dob=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_dob<span class="sc">}</span><span class="ss">)'</span></span>
-<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>    u1 <span class="op">=</span> User(name<span class="op">=</span><span class="st">'Johsua Ringler'</span>, uid<span class="op">=</span><span class="st">'joshua'</span>, password<span class="op">=</span><span class="st">'5678'</span>, dob<span class="op">=</span>date(<span class="dv">2011</span>, <span class="dv">2</span>, <span class="dv">15</span>), classOf<span class="op">=</span><span class="st">'2029'</span>)</span>
-<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>    u2 <span class="op">=</span> User(name<span class="op">=</span><span class="st">'Alyssa Ringler'</span>, uid<span class="op">=</span><span class="st">'alyssa'</span>, password<span class="op">=</span><span class="st">'1234'</span>, dob<span class="op">=</span>date(<span class="dv">2006</span>, <span class="dv">8</span>, <span class="dv">20</span>), classOf<span class="op">=</span><span class="st">'2024'</span>)</span>
-<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"JSON ready string:</span><span class="ch">\n</span><span class="st">"</span>, u1, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) </span>
-<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Raw Variables of object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">vars</span>(u1), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) </span>
-<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Raw Attributes and Methods of object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">dir</span>(u1), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Representation to Re-Create the object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">repr</span>(u1), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) </span>
-<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"JSON ready string:</span><span class="ch">\n</span><span class="st">"</span>, u2, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) </span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Raw Variables of object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">vars</span>(u2), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Raw Attributes and Methods of object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">dir</span>(u2), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Representation to Re-Create the object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">repr</span>(u2), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># variables with self prefix</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._name <span class="op">=</span> name   </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._uid <span class="op">=</span> uid</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.set_password(password)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._dob <span class="op">=</span> dob</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._classOf <span class="op">=</span> classOf</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> name(<span class="va">self</span>):</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._name</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># setter function</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">@name.setter</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> name(<span class="va">self</span>, name):</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._name <span class="op">=</span> name</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># getter method</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> uid(<span class="va">self</span>):</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._uid</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># setter function</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">@uid.setter</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> uid(<span class="va">self</span>, uid):</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._uid <span class="op">=</span> uid</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># returns boolean</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_uid(<span class="va">self</span>, uid):</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._uid <span class="op">==</span> uid</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># date is returned as a string</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dob(<span class="va">self</span>):</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>        dob_string <span class="op">=</span> <span class="va">self</span>._dob.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">-%Y'</span>)</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dob_string</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>    <span class="co"># verification</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">@dob.setter</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dob(<span class="va">self</span>, dob):</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._dob <span class="op">=</span> dob</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># age calculation</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> age(<span class="va">self</span>):</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>        today <span class="op">=</span> date.today()</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> today.year <span class="op">-</span> <span class="va">self</span>._dob.year <span class="op">-</span> ((today.month, today.day) <span class="op">&lt;</span> (<span class="va">self</span>._dob.month, <span class="va">self</span>._dob.day))</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> classOf(<span class="va">self</span>):</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._classOf</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>    <span class="co"># setter function</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classOf.setter</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> name(<span class="va">self</span>, classOf):</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._classOf <span class="op">=</span> classOf</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># customized dictionary</span></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dictionary(<span class="va">self</span>):</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>        <span class="bu">dict</span> <span class="op">=</span> {</span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>            <span class="st">"name"</span> : <span class="va">self</span>.name,</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>            <span class="st">"uid"</span> : <span class="va">self</span>.uid,</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>            <span class="st">"dob"</span> : <span class="va">self</span>.dob,</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>            <span class="st">"age"</span> : <span class="va">self</span>.age</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">dict</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>    <span class="co"># setter function</span></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> set_password(<span class="va">self</span>, password):</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Create a hashed password."""</span></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._password <span class="op">=</span> generate_password_hash(password, method<span class="op">=</span><span class="st">'sha256'</span>)</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>    <span class="co"># password checker</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_password(<span class="va">self</span>, password):</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Check against hashed password."""</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> check_password_hash(<span class="va">self</span>._password, password)</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result</span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output</span></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> json.dumps(<span class="va">self</span>.dictionary)</span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f'User(name=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_name<span class="sc">}</span><span class="ss">, uid=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_uid<span class="sc">}</span><span class="ss">, password=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_password<span class="sc">}</span><span class="ss">,dob=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_dob<span class="sc">}</span><span class="ss">)'</span></span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>    u1 <span class="op">=</span> User(name<span class="op">=</span><span class="st">'Johsua Ringler'</span>, uid<span class="op">=</span><span class="st">'joshua'</span>, password<span class="op">=</span><span class="st">'5678'</span>, dob<span class="op">=</span>date(<span class="dv">2011</span>, <span class="dv">2</span>, <span class="dv">15</span>), classOf<span class="op">=</span><span class="st">'2029'</span>)</span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>    u2 <span class="op">=</span> User(name<span class="op">=</span><span class="st">'Alyssa Ringler'</span>, uid<span class="op">=</span><span class="st">'alyssa'</span>, password<span class="op">=</span><span class="st">'1234'</span>, dob<span class="op">=</span>date(<span class="dv">2006</span>, <span class="dv">8</span>, <span class="dv">20</span>), classOf<span class="op">=</span><span class="st">'2024'</span>)</span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"JSON ready string:</span><span class="ch">\n</span><span class="st">"</span>, u1, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) </span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Raw Variables of object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">vars</span>(u1), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) </span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Raw Attributes and Methods of object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">dir</span>(u1), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Representation to Re-Create the object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">repr</span>(u1), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) </span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"JSON ready string:</span><span class="ch">\n</span><span class="st">"</span>, u2, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) </span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Raw Variables of object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">vars</span>(u2), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Raw Attributes and Methods of object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">dir</span>(u2), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Representation to Re-Create the object:</span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">repr</span>(u2), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>16
 JSON ready string:
  {"name": "2029", "uid": "joshua", "dob": "02-15-2011", "age": 11} 
 
 Raw Variables of object:
- {'_name': 'Johsua Ringler', '_uid': 'joshua', '_password': 'sha256$UBXBzvtvpg5HqXTO$f8ef22319a1f6441b94d8fba2f1447db6ac026855b1aa9cbcec246f2c763c770', '_dob': datetime.date(2011, 2, 15), '_classOf': '2029'} 
+ {'_name': 'Johsua Ringler', '_uid': 'joshua', '_password': 'sha256$UEuuFrvhUVGwSMrk$bb64da647e7ce2f3608213c04267dad33e39fc6219365a709e6cde57d943c7c1', '_dob': datetime.date(2011, 2, 15), '_classOf': '2029'} 
 
 Raw Attributes and Methods of object:
  ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_classOf', '_dob', '_name', '_password', '_uid', 'age', 'classOf', 'dictionary', 'dob', 'is_password', 'is_uid', 'name', 'set_password', 'uid'] 
 
 Representation to Re-Create the object:
- User(name=Johsua Ringler, uid=joshua, password=sha256$UBXBzvtvpg5HqXTO$f8ef22319a1f6441b94d8fba2f1447db6ac026855b1aa9cbcec246f2c763c770,dob=2011-02-15) 
+ User(name=Johsua Ringler, uid=joshua, password=sha256$UEuuFrvhUVGwSMrk$bb64da647e7ce2f3608213c04267dad33e39fc6219365a709e6cde57d943c7c1,dob=2011-02-15) 
 
 JSON ready string:
  {"name": "2024", "uid": "alyssa", "dob": "08-20-2006", "age": 16} 
 
 Raw Variables of object:
- {'_name': 'Alyssa Ringler', '_uid': 'alyssa', '_password': 'sha256$BSR2w3yQWtSwnJi8$bc4329403cff833d11416de9ca272e7da2d203773881bbb9eee158c3009a45d5', '_dob': datetime.date(2006, 8, 20), '_classOf': '2024'} 
+ {'_name': 'Alyssa Ringler', '_uid': 'alyssa', '_password': 'sha256$Vc3XodIn4Iimy8eO$9e85ebcb196a5074a96e50c6bc647f56699f195b6f986438b6a18d09e9d68718', '_dob': datetime.date(2006, 8, 20), '_classOf': '2024'} 
 
 Raw Attributes and Methods of object:
  ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_classOf', '_dob', '_name', '_password', '_uid', 'age', 'classOf', 'dictionary', 'dob', 'is_password', 'is_uid', 'name', 'set_password', 'uid'] 
 
 Representation to Re-Create the object:
- User(name=Alyssa Ringler, uid=alyssa, password=sha256$BSR2w3yQWtSwnJi8$bc4329403cff833d11416de9ca272e7da2d203773881bbb9eee158c3009a45d5,dob=2006-08-20) 
+ User(name=Alyssa Ringler, uid=alyssa, password=sha256$Vc3XodIn4Iimy8eO$9e85ebcb196a5074a96e50c6bc647f56699f195b6f986438b6a18d09e9d68718,dob=2006-08-20) 
 </code></pre>
 </div>
 </div>
