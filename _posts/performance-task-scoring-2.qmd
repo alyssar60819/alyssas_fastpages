@@ -1,0 +1,56 @@
+---
+toc: true
+layout: post
+categories: [week18]
+title: Grading Performance Tasks Week 2
+---
+
+### <mark>Week 18</mark> Performance Task Grading #2
+
+# Submission 1
+
+| Category | My Score | College Board Score | Explanation |
+| ------------- | ------------- | ------------- | ------------- |
+| Program Purpose and Function | 1 | 1 | The video shows program functionality and purpose, and includes specific inputs and outputs of the program. |
+| Data Abstraction | 0 | 0 | The student indentifies the name and data in the list, but the list from first code segment is not included in the second code segment. |
+| Managing Complexity | 1 | 1 | The students explains how the program could have been written without the list and shows how the list manages complexity. |
+| Procedural Abstraction | 0 | 0 | The code segments are shown, but the student fails to explain the purpose of the procedure. | 
+| Algorithm Implementation | 1 | 1 | The student correctly indentifies an algorithm that includes selection, iteration, and sequencing. | 
+| Testing | 1 | 1 | The student describes the two tests from the program in detail and tests relevant conditions.  | 
+
+# Submission 2
+
+| Category | My Score | College Board Score | Explanation |
+| ------------- | ------------- | ------------- | ------------- |
+| Program Purpose and Function | 1 | 1 | he video shows program functionality and purpose, and includes specific inputs and outputs of the program. |
+| Data Abstraction | 1 | 1 | The student shows code segments and explains the function of the lists |
+| Managing Complexity | 1 | 1 | The students explains how the program could have been written without the list and shows how the list manages complexity. |
+| Procedural Abstraction | 1 | 1 | The procedure is called sucessfully with parameters and the student explains the functionaility of the procedure in detail. | 
+| Algorithm Implementation | 1 | 1 | Student includes sequencing, selection, and iteration in their program. | 
+| Testing | 1 | 1 | The student describes the two tests from the program in detail and tests relevant conditions. | 
+
+# Submission 3
+
+| Category | My Score | College Board Score | Explanation |
+| ------------- | ------------- | ------------- | ------------- |
+| Program Purpose and Function | 1 | 1 | The student demonstrates the functionality of the progrm and explains its purpose, as well as the needed inputs and outputs. |
+| Data Abstraction | 0 | 0 | Student does not adequately explain the purpose and functionailty of the list, and the lsit is not used within the code segment. |
+| Managing Complexity | 0 | 0 | The student explains how the code segment helps manage complexity but does not provide an alternative method |
+| Procedural Abstraction | 0 | 0 | The procedure is called and given parameters, but the student does not adequately describe its function. | 
+| Algorithm Implementation | 0 | 0 | The algorithm does not include iteration and is explained poorly. | 
+| Testing | 0 | 0 | The student does not test necessary condtions. | 
+
+# Submission 4
+
+| Category | My Score | College Board Score | Explanation |
+| ------------- | ------------- | ------------- | ------------- |
+| Program Purpose and Function | 1 | 1 | The student demonstrates the functionality of the progrm and explains its purpose, as well as the needed inputs and outputs. |
+| Data Abstraction | 1 | 1 | The list is defined and used within the code segments, and the students explains the purpose of the list. |
+| Managing Complexity | 1 | 1 | The list simplifies helps manage the complexity of the program and the student provides an alternative method. |
+| Procedural Abstraction | 1 | 1 | The student shows a procedure with multiple parameters and describsd the functionality of the procedure. | 
+| Algorithm Implementation | 1 | 1 | The algorithm includes sequencing, selection, and iteration, and the student describes the algorithm's purpose. | 
+| Testing | 1 | 1 | The student describes the contions being tested and shows the output. | 
+
+
+### Reflection on Scoring
+I think my scoring was more accurate than last week's and I am feeling more confident about what requirements are being met. I am also able to receall most of the requirements for each row without looking at the rubric. I think this assignment will help me meet the CPT requirements in my own project as I continue to work on it this week.
