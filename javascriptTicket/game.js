@@ -1,3 +1,5 @@
+
+
 function setup() {
     createCanvas(600, 600);
   }
@@ -5,16 +7,14 @@ function setup() {
   function draw() {
 
         // Random target color
-        var Red = Math.random(50, 255);
-        var Green = Math.random(50, 255);
-        var Blue = Math.random(50, 255);
-
+        var Red = Math.floor(Math.random() * 206) + 50;
+        var Green = Math.floor(Math.random() * 206) + 50;
+        var Blue = Math.floor(Math.random() * 206) + 50;
 
         // Water color
         var newRed = 210;
         var newGreen = 215;
         var newBlue = 250;
-
 
         // Button enlargement
         var cupWidth = 5;
@@ -27,7 +27,6 @@ function setup() {
         var playWidth = 45;
         var arrowWidth = 8;
 
-
         // Current paint color
         var isRed = false;
         var isGreen = false;
@@ -35,35 +34,28 @@ function setup() {
         var isBlack = false;
         var isWhite = false;
 
-
         // Dropper paint color
         var paint1 = 210;
         var paint2 = 215;
         var paint3 = 250;
-
 
         // Color accuracy
         var goodRed = false;
         var goodGreen = false;
         var goodBlue = false;
 
-
         // Accuracy display
         var display1 = 100;
         var display2 = 100;
-
 
         // Score display and timebar
         var score = 0;
         var time = 595;
         var end = false;
 
-
         draw = function() {
 
-
         background(255, 255, 255);
-
 
         // Color square
         fill(Red, Green, Blue);
@@ -74,13 +66,12 @@ function setup() {
         textSize(50);
         text("Make This Color", 115, 510);
         textSize(30);
-        text("Next Level", 195, display1+555);
-        text("Keep Trying!", 220, display2+555);
+        text("Next Level", 195, display1 + 555);
+        text("Keep Trying!", 220, display2 + 555);
         strokeWeight(10);
-        line(350, display1+545, 410, display1+545);
-        line(400, display1+535, 410, display1+545);
-        line(400, display1+555, 410, display1+545);
-
+        line(350, display1 + 545, 410, display1 + 545);
+        line(400, display1 + 535, 410, display1 + 545);
+        line(400, display1 + 555, 410, display1 + 545);
 
         // Cup and water
         fill(255, 255, 255);
@@ -89,15 +80,7 @@ function setup() {
         quad(225, 432, 375, 432, 400, 200, 200, 200);
         fill(newRed, newGreen, newBlue);
         noStroke();
-        quad(227, 430, 373, 430, 393, 246, 208, 252);
-        rect(220, 240, 165, 20);
-        fill(255, 255, 255);
-        stroke(0, 0, 0);
-        arc(215, 210, 80, 80, 50, 100);
-        arc(270, 210, 80, 80, 50, 133);
-        arc(325, 210, 80, 80, 50, 133);
-        arc(380, 210, 80, 80, 75, 133);
-
+        quad(227, 430, 373, 430, 393, 246, 208, 246);
 
         // Score display
         noFill();
@@ -110,7 +93,6 @@ function setup() {
         textSize(30);
         text("Score:", 450, 290);
 
-
         // Time bar
         fill(210, 215, 250);
         stroke(0, 0, 0);
@@ -122,7 +104,6 @@ function setup() {
         if(time<0.5) {
             end = true;
         }
-
 
         // Red paint blob
         fill(255, 0, 0);
@@ -146,8 +127,6 @@ function setup() {
         noFill();
         stroke(255, 255, 255);
         strokeWeight(5);
-        arc(42, 62, 35, 35, 170, 235);
-
 
         // Green paint blob
         fill(38, 224, 38);
@@ -171,8 +150,6 @@ function setup() {
         noFill();
         stroke(255, 255, 255);
         strokeWeight(5);
-        arc(162, 62, 35, 35, 170, 235);
-
 
         // Blue paint blob
         fill(0, 0, 255);
@@ -196,8 +173,6 @@ function setup() {
         noFill();
         stroke(255, 255, 255);
         strokeWeight(5);
-        arc(282, 62, 35, 35, 170, 235);
-
 
         // Black paint blob
         fill(36, 36, 36);
@@ -221,8 +196,6 @@ function setup() {
         noFill();
         stroke(255, 255, 255);
         strokeWeight(5);
-        arc(402, 62, 35, 35, 170, 235);
-
 
         // White paint blob
         fill(224, 224, 224);
@@ -246,8 +219,6 @@ function setup() {
         noFill();
         stroke(255, 255, 255);
         strokeWeight(5);
-        arc(522, 62, 35, 35, 170, 235);
-
 
         // Paint dropper
         stroke(0, 0, 0);
@@ -271,7 +242,6 @@ function setup() {
         line(86, 300, 70, 300);
         noStroke();
         ellipse(90, 195, 30, 30);
-
 
         // Changing dropper color
         if(isRed === true) {
@@ -299,7 +269,6 @@ function setup() {
             paint2 = 224;
             paint3 = 224;
         }
-
 
         // Button enlargment
         if(mouseX>200 && mouseX<400 && mouseY>200 && mouseY<432) {
@@ -345,7 +314,6 @@ function setup() {
             whiteWidth = 3;
         }
 
-
         // Checking accuracy
         if(newRed>Red-20 && newRed<Red+20) {
             goodRed = true;
@@ -373,7 +341,6 @@ function setup() {
             display1 = 100;
             display2 = 0;
         }
-
 
         // Selecting paint color
         mousePressed = function() {
@@ -470,9 +437,9 @@ function setup() {
                         isBlack = false;
                         isWhite = false;
                         // New random target color
-                        Red = Math.random(50, 255);
-                        Green = Math.random(50, 255);
-                        Blue = Math.random(50, 255);
+                        Red = Math.floor(Math.random() * 206) + 50;
+                        Green = Math.floor(Math.random() * 206) + 50;
+                        Blue = Math.floor(Math.random() * 206) + 50;
                         // Return display position
                         display1 = 100;
                         display2 = 100;
@@ -481,7 +448,6 @@ function setup() {
                 }
             }
         };
-
 
         // Game end
         if(end===true) {
@@ -501,12 +467,12 @@ function setup() {
             stroke(0, 0, 0);
             strokeWeight(10);
             rect(95, 100, 400, 400, 20);
-            stroke(0, 0, 0);
-            strokeWeight(8);
-            arc(236, 145, 115, 91, 10, 170);
-            arc(122, 145, 115, 91, 10, 115);
-            arc(350, 145, 115, 91, 10, 170);
-            arc(464, 145, 115, 91, 60, 170);
+            //stroke(0, 0, 0);
+            //strokeWeight(8);
+            //arc(236, 145, 115, 91, 10, 170);
+            //arc(122, 145, 115, 91, 10, 115);
+            //arc(350, 145, 115, 91, 10, 170);
+            //arc(464, 145, 115, 91, 60, 170);
             fill(0, 0, 0);
             textSize(65);
             text("Game Over", 125, 275);
@@ -534,7 +500,6 @@ function setup() {
                 }
             };
         }
-
 
         };
 
